@@ -266,14 +266,6 @@ function hud(){
  Object.keys(SP).forEach((t,i)=>{ctx.font='26px '+EMO;ctx.fillStyle='#fff';ctx.fillText(SP[t],74+i*100,111);ctx.font='700 24px '+FONT;ctx.fillText(stats[t],110+i*100,112);});
  ctx.textAlign='right';ctx.font='500 18px '+FONT;ctx.fillStyle='#ffc9c9';
  ctx.fillText('eaten '+stats.eaten+' \u00b7 comet '+stats.comet+' \u00b7 thrown '+stats.thrown+' \u00b7 total '+(stats.eaten+stats.comet+stats.thrown),W-30,111);
- // screen toss
- throwT-=dt;
- if(throwT<=0){throwT=rnd(180,240);const a=alive().filter(e=>!e.busy);
-  if(a.length&&!toss){const t=a[0|rnd(0,a.length)];t.busy=true;toss={e:t,t:0,ix:W/2+rnd(-80,80),iy:H*.45+rnd(-80,80)};say(t.x,t.y-130,'thrown at the screen!','#ffffff');}}
- if(toss){toss.t+=dt;
-  if(toss.t>=2.2){const e=toss.e;if(!e.dead)kill(e,'thrown');crack=makeCrack(toss.ix,toss.iy);crack.em=SP[e.type];shake=.9;toss=null;}}
- if(crack){crack.t+=dt;if(crack.t>15)crack=null;}
- shake=Math.max(0,shake-dt*1.2);
  // comet + weapon timers
  pill(16,H-130,W-32,44,'rgba(10,20,15,.62)');
  ctx.textAlign='center';ctx.fillStyle='#fff';
